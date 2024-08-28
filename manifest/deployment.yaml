@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-deployment
+  labels:
+    app: mytomcat
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mytomcat
+  template:
+    metadata:
+      labels:
+        app: mytomcat
+    spec:
+      containers:
+      - name: mytomcat
+        image: sanjoysaha/my-tomcat
+        ports:
+        - containerPort: 80
